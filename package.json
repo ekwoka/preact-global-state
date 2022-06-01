@@ -1,0 +1,21 @@
+{
+  "name": "@ekwoka/preact-global-state",
+  "version": "0.1.2",
+  "description": "Global State for Preact. With Types!",
+  "main": "dist/",
+  "types": "dist/",
+  "scripts": {
+    "build": "tsc",
+    "minor": "pnpm build && pnpm version minor && pnpm publish",
+    "patch": "pnpm build && pnpm version patch && pnpm publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "preact": ">=10"
+  }
+}
