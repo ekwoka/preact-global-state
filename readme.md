@@ -1,5 +1,7 @@
 # Peact Global State
 
+[<img src="https://badgen.net/npm/v/@ekwoka/preact-global-state">](https://www.npmjs.com/package/@ekwoka/preact-global-state) <img src="https://badgen.net/npm/types/@ekwoka/preact-global-state?icon=typescript"> <img src="https://badgen.net/npm/dt/@ekwoka/preact-global-state" >
+
 This is a rewrite of `preact-global-state` to add types, improve support for ESM modules, and also give `useGlobalState` more feature parity with `useState`.
 
 This allows you to share state between multiple components, similar to `useContext` or even `redux` but at a simpler and more focussed level.
