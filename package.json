@@ -1,6 +1,6 @@
 {
   "name": "@ekwoka/preact-global-state",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Global State for Preact. With Types!",
   "main": "dist/",
   "types": "dist/",
