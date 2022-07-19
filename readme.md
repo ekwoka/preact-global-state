@@ -15,8 +15,10 @@ const [counter, setCounter] = useGlobalState<number>('my-counter', 0); // (state
 
 return (
   <div>
-    <button onClick={() => setCounter(1)}> // directly setting the state Set to 1!</button>
-    <button onClick={() => setCounter((prev) => prev + 1)}> // using a state function to update the state Increment!</button>
+    <button onClick={() => setCounter(1)} > // directly setting the state Set to 1!
+	</button>
+    <button onClick={() => setCounter((prev) => prev + 1)}> // using a state function to update the state Increment!
+    </button>
   </div>
 );
 ```
