@@ -1,18 +1,38 @@
 {
   "name": "@ekwoka/preact-global-state",
   "version": "0.1.4",
+  "type": "module",
   "description": "Global State for Preact. With Types!",
   "main": "dist/",
   "types": "dist/",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
+    "major": "pnpm build && pnpm version major && pnpm publish",
     "minor": "pnpm build && pnpm version minor && pnpm publish",
     "patch": "pnpm build && pnpm version patch && pnpm publish"
   },
-  "keywords": [],
-  "author": "",
+  "peerDependencies": {
+    "preact": "^9.0.0"
+  },
+  "keywords": [
+    "preact",
+    "typescrypt",
+    "global state"
+  ],
+  "author": {
+    "name": "Eric Kwoka",
+    "url": "https://thekwoka.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekwoka/preact-global-state.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.7.3"
-  }
+  },
+  "sideEffects": false
 }

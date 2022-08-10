@@ -1,6 +1,9 @@
 # Peact Global State
 
-[<img src="https://badgen.net/npm/v/@ekwoka/preact-global-state">](https://www.npmjs.com/package/@ekwoka/preact-global-state) <img src="https://badgen.net/npm/types/@ekwoka/preact-global-state?icon=typescript"> <img src="https://badgen.net/npm/dt/@ekwoka/preact-global-state" >
+[<img src="https://img.shields.io/npm/v/@ekwoka/preact-global-state?style=for-the-badge">](https://www.npmjs.com/package/@ekwoka/preact-global-state)
+<img src="https://img.shields.io/npm/types/@ekwoka/preact-global-state?label=%20&amp;logo=typescript&amp;logoColor=white&amp;style=for-the-badge">
+<img src="https://img.shields.io/npm/dt/@ekwoka/preact-global-state?style=for-the-badge" >
+[<img src="https://img.shields.io/bundlephobia/minzip/@ekwoka/preact-global-state?style=for-the-badge">](https://bundlephobia.com/package/@ekwoka/preact-global-state)
 
 This is a rewrite of `preact-global-state` to add types, improve support for ESM modules, and also give `useGlobalState` more feature parity with `useState`.
 
@@ -15,10 +18,8 @@ const [counter, setCounter] = useGlobalState<number>('my-counter', 0); // (state
 
 return (
   <div>
-    <button onClick={() => setCounter(1)} > // directly setting the state Set to 1!
-	</button>
-    <button onClick={() => setCounter((prev) => prev + 1)}> // using a state function to update the state Increment!
-    </button>
+    <button onClick={() => setCounter(1)}> // directly setting the state Set to 1!</button>
+    <button onClick={() => setCounter((prev) => prev + 1)}> // using a state function to update the state Increment!</button>
   </div>
 );
 ```
