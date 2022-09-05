@@ -15,7 +15,7 @@
     "patch": "pnpm build && pnpm version patch && pnpm publish"
   },
   "peerDependencies": {
-    "preact": "^9.0.0"
+    "preact": "9 - 10"
   },
   "keywords": [
     "preact",
