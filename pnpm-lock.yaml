@@ -1,21 +1,15 @@
 lockfileVersion: 5.4
 
 specifiers:
-  preact: ^10.10.2
-  typescript: ^4.7.4
+  typescript: ^4.8.2
 
 devDependencies:
-  preact: 10.10.2
-  typescript: 4.7.4
+  typescript: 4.8.2
 
 packages:
 
-  /preact/10.10.2:
-    resolution: {integrity: sha512-GUXSsfwq4NKhlLYY5ctfNE0IjFk7Xo4952yPI8yMkXdhzeQmQ+FahZITe7CeHXMPyKBVQ8SoCmGNIy9TSOdhgQ==}
-    dev: true
-
-  /typescript/4.7.4:
-    resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
+  /typescript/4.8.2:
+    resolution: {integrity: sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
