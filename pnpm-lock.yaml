@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': '>=7.12.10 <8.0.0'
   '@preact/preset-vite': ^2.4.0
+  '@preact/signals': ^1.1.1
   '@testing-library/preact': ^3.2.2
   '@vitest/coverage-c8': ^0.23.4
   happy-dom: ^6.0.4
@@ -17,6 +18,7 @@ specifiers:
 devDependencies:
   '@babel/core': 7.19.1
   '@preact/preset-vite': 2.4.0_znorg7qisg2x2cwmeoubwalmrq
+  '@preact/signals': 1.1.1_preact@10.11.0
   '@testing-library/preact': 3.2.2_preact@10.11.0
   '@vitest/coverage-c8': 0.23.4_happy-dom@6.0.4
   happy-dom: 6.0.4
@@ -368,6 +370,19 @@ packages:
     transitivePeerDependencies:
       - preact
       - supports-color
+    dev: true
+
+  /@preact/signals-core/1.2.0:
+    resolution: {integrity: sha512-GBjq/8WJkh/aenrEMvWIOr1lRfu6nb25er0m6r+4qVqKC85mXAYIbGHnoHTooNXCKxn2KEMUrATvN54MdMHE1A==}
+    dev: true
+
+  /@preact/signals/1.1.1_preact@10.11.0:
+    resolution: {integrity: sha512-I1DhYo2d1t9qDkEq1jYDVTQdBGmo4NlqatNEtulsS/87kVdwhZluP6TTDS4/5sc2h86TlBF6UA6LO+tDpIt/Gw==}
+    peerDependencies:
+      preact: 10.x
+    dependencies:
+      '@preact/signals-core': 1.2.0
+      preact: 10.11.0
     dev: true
 
   /@prefresh/babel-plugin/0.4.3:

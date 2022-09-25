@@ -1,88 +1,27 @@
-import { StateUpdater, useCallback, useEffect, useState } from 'preact/hooks';
+import { Signal, signal } from '@preact/signals';
+import { StateUpdater, useCallback } from 'preact/hooks';
 
-const GlobalState = <T>(initialValue: T): GlobalStateMethods<T> => {
-  let value: T = initialValue;
-  let subscribers: ((value: T) => void)[] = [];
+export const useGlobalState: UseGlobalState = (key, defaultValue = null) => {
+  store[key] = store[key] ?? signal(defaultValue);
 
-  return {
-    getValue: () => value,
-    setValue: (newState: T) => {
-      if (value === newState) return;
-      value = newState;
-      subscribers.forEach((subscriber) => subscriber(value));
+  const set = useCallback<StateUpdater<typeof defaultValue>>(
+    (v) => {
+      const newValue = 'call' in v ? v(store[key].value) : v;
+      store[key].value = newValue;
     },
-    subscribe: (itemToSubscribe: (value: T) => void) => {
-      if (subscribers.indexOf(itemToSubscribe) > -1) return;
-      subscribers.push(itemToSubscribe);
-    },
-    unsubscribe(itemToUnsubscribe: (value: T) => void) {
-      subscribers = subscribers.filter((subscriber) => subscriber !== itemToUnsubscribe);
-    }
-  };
-};
-export const Store = () => {
-  const store: StoreObject = {};
-
-  return {
-    init(obj: { [key: string]: any }) {
-      Object.entries(obj).forEach(([key, value]) => this.setState(key, value));
-    },
-
-    getState(key: string, defaultValue: any) {
-      if (store[key] === undefined) {
-        this.setState(key, defaultValue);
-      }
-      return store[key];
-    },
-
-    setState: (key: string, value: any): void => {
-      store[key] = GlobalState(value);
-    }
-  };
-};
-
-export const useGlobalState: UseGlobalState = (key, defaultValue) => {
-  if (typeof defaultValue === 'undefined') {
-    defaultValue = null;
-  }
-
-  const [, setState] = useState<object>();
-  const globalState = store.getState(key, defaultValue);
-
-  const currentState = globalState.getValue();
-
-  function reRender() {
-    setState({});
-  }
-
-  useEffect(() => {
-    globalState.subscribe(reRender);
-    return function () {
-      globalState.unsubscribe(reRender);
-    };
-  });
-
-  const set = useCallback(
-    (v: any) => {
-      const newValue = typeof v === 'function' ? v(globalState.getValue()) : v;
-      globalState.setValue(newValue);
-    },
-    [globalState]
+    [store[key]]
   );
-  return [currentState, set];
+  return [store[key].value, set];
 };
 
-export const store = Store();
+export const store: Record<string, Signal> = {};
 
-type UseGlobalState = <T>(key: string, defaultValue?: T | null) => [T, StateUpdater<T>];
-
-type GlobalStateMethods<T> = {
-  getValue: () => T;
-  setValue: (newState: T) => void;
-  subscribe: (itemToSubscribe: (value: T) => void) => void;
-  unsubscribe: (itemToUnsubscribe: (value: T) => void) => void;
+export const Store: StoreInitializer = (initialValues) => {
+  Object.entries(initialValues).forEach(([key, value]) => {
+    store[key] = signal(value);
+  });
 };
 
-type StoreObject = {
-  [key: string]: GlobalStateMethods<any>;
-};
+type UseGlobalState = <T>(key: string, defaultValue?: T) => [T, StateUpdater<T>];
+
+type StoreInitializer = (initialValues: Record<string, unknown>) => void;

@@ -20,7 +20,8 @@
     "precommit": "run-s test:run build"
   },
   "peerDependencies": {
-    "preact": "9 - 10"
+    "preact": "9 - 10",
+    "@preact/signals": ">=1"
   },
   "keywords": [
     "preact",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@babel/core": ">=7.12.10 <8.0.0",
     "@preact/preset-vite": "^2.4.0",
+    "@preact/signals": "^1.1.1",
     "@testing-library/preact": "^3.2.2",
     "@vitest/coverage-c8": "^0.23.4",
     "happy-dom": "^6.0.4",
