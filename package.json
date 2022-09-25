@@ -13,9 +13,9 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest --coverage",
-    "major": "pnpm build && pnpm version major && pnpm publish",
-    "minor": "pnpm build && pnpm version minor && pnpm publish",
-    "patch": "pnpm build && pnpm version patch && pnpm publish",
+    "major": "bun run precommit && pnpm version major && pnpm publish",
+    "minor": "bun run precommit && pnpm version minor && pnpm publish",
+    "patch": "bun run precommit && pnpm version patch && pnpm publish",
     "prepare": "husky install",
     "precommit": "run-s test:run build"
   },
