@@ -6,7 +6,7 @@ export const useGlobalState = <T>(key: string, defaultValue: T = null): [T, Stat
 
   const set = useCallback<StateUpdater<typeof defaultValue>>(
     (v) => {
-      const newValue = isFunction(v) && 'call' in v ? v(signal.value) : (v as T);
+      const newValue = v instanceof Function ? v(signal.value) : (v as T);
       signal.value = newValue;
     },
     [signal]
@@ -18,8 +18,6 @@ export const useGlobalSignal = <T>(key: string, defaultValue: T = null): Signal<
   store[key] = store[key] ?? signal(defaultValue);
   return store[key];
 };
-
-const isFunction = (v: any): boolean => typeof v === 'function';
 
 export const store: Record<string, Signal> = {};
 
