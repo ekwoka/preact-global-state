@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { render, fireEvent, screen, cleanup, renderHook, act } from '@testing-library/preact';
 import { afterEach, describe, expect, it } from 'vitest';
-import { useGlobalSignal, useGlobalState } from '../src';
+import { Store, useGlobalSignal, useGlobalState } from '../src';
 import { Signal } from '@preact/signals';
 
 describe('useGlobalState', () => {
@@ -112,5 +112,18 @@ describe('useGlobalSignal', () => {
     fireEvent.click(await screen.findByTestId('button-2'));
     expect((await screen.findByTestId('span-1')).textContent).toBe('3');
     expect((await screen.findByTestId('span-2')).textContent).toBe('3');
+  });
+});
+
+describe('Store', () => {
+  it('should initialize signals to default values', () => {
+    Store({
+      storetest: 1,
+      hello: 'world'
+    });
+    const storetest = useGlobalSignal('storetest', 0);
+    const hello = useGlobalSignal('hello', '');
+    expect(storetest.value).toBe(1);
+    expect(hello.value).toBe('world');
   });
 });
