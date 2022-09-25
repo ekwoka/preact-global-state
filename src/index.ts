@@ -14,7 +14,7 @@ export const useGlobalSignal = <T>(key: string, defaultValue: T = null): Signal<
   return store[key];
 };
 
-export const useGlobalState = <T>(key: string, defaultValue: T = null): [T, StateUpdater<T>] => {
+export const useGlobalState = <T>(key: string, defaultValue?: T): [T, StateUpdater<T>] => {
   const signal = useGlobalSignal(key, defaultValue);
 
   const set = useCallback<StateUpdater<typeof defaultValue>>(
