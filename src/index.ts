@@ -6,13 +6,15 @@ export const useGlobalState: UseGlobalState = (key, defaultValue = null) => {
 
   const set = useCallback<StateUpdater<typeof defaultValue>>(
     (v) => {
-      const newValue = 'call' in v ? v(store[key].value) : v;
+      const newValue = isFunction(v) && 'call' in v ? v(store[key].value) : v;
       store[key].value = newValue;
     },
     [store[key]]
   );
   return [store[key].value, set];
 };
+
+const isFunction = (v: any): boolean => typeof v === 'function';
 
 export const store: Record<string, Signal> = {};
 
